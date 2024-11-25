@@ -359,16 +359,17 @@ const SignupStep1 = ({
             visuals. Let the beauty of these stories ignite your passion for
             adventure and set your soul on a journey to explore the unknown.
           </p>
-          <div className="flex justify-between items-center mt-8">
-            <span className="text-sm">01 — 03</span>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-16 h-0.5 bg-white"></div> {/* Center line */}
-              <div className="flex space-x-6">
-                <span className="text-white">1</span>
-                <span className="text-white">2</span>
-                <span className="text-white">3</span>
-              </div>
+          <div className="flex items-center mt-8 space-x-4 w-[50%] gap-[30px]">
+            <div className="flex-1 relative">
+              <div className="w-full h-0.5 bg-gray-300"></div>{" "}
+              {/* Full horizontal line */}
+              <div
+                className="absolute top-0 left-0 h-0.5 bg-white"
+                style={{ width: "30%" }}
+              ></div>{" "}
+              {/* 30% filled portion */}
             </div>
+            <span className="text-sm">01 — 03</span>
           </div>
         </div>
       </div>
