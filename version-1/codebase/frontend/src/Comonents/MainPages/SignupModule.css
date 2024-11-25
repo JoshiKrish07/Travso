@@ -1,0 +1,114 @@
+.css-1jqq78o-placeholder {
+    grid-area: 1 / 1 / 2 / 3;
+    color: hsl(208.42deg 36.54% 20.39%) !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    box-sizing: border-box;
+    text-align: left !important;
+    padding: 1px !important;
+}
+
+.css-1dimb5e-singleValue {
+    grid-area: 1 / 1 / 2 / 3;
+    color: hsl(208.42deg 36.54% 20.39%) !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    box-sizing: border-box;
+    text-align: left !important;
+    padding: 1px !important;
+}
+
+.css-hlgwow{
+    padding: 2px 5px !important;
+}
+
+.css-1u9des2-indicatorSeparator{
+    background: none !important;
+}
+
+.css-13cymwt-control{
+    border: none !important;
+}
+
+.css-16xfy0z-control{
+    background: none !important;
+    border: none !important;
+}
+
+.css-894a34-indicatorSeparator{
+    background: none !important;
+}
+
+.css-t3ipsp-control:hover{
+    border-color: white !important;
+}
+
+.css-t3ipsp-control {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: default;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    min-height: 38px;
+    outline: 0 !important;
+    position: relative;
+    -webkit-transition: all 100ms;
+    transition: all 100ms;
+    background-color: hsl(0, 0%, 100%);
+    border-color: white !important;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 0 1px white !important;
+    box-sizing: border-box;
+}
+
+.css-1xc3v61-indicatorContainer {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: color 150ms;
+    transition: color 150ms;
+    color: #364045 !important;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.spaceuse div {
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.otp-input {
+    width: 3rem !important; /* w-12 */
+    height: 3rem !important; /* h-12 */
+    text-align: center !important;
+    font-size: 1.25rem !important; /* text-xl */
+  }
+  
+  @media (min-width: 640px) {
+    .otp-input {
+      width: 4rem !important; /* sm:w-16 */
+      height: 3rem !important; /* sm:h-12 */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .otp-input {
+      width: 4rem !important; /* md:w-16 */
+      height: 3rem !important; /* md:h-12 */
+    }
+  }
+  

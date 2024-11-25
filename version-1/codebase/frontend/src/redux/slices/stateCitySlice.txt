@@ -1,0 +1,60 @@
+
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+const stateCityUrl = import.meta.env.VITE_STATE_CITY_URL;
+
+// Async thunk to fetch cities for a given state
+export const fetchCities = createAsyncThunk(
+    'stateCity/fetchCities',
+    async ({ state, country }, { rejectWithValue }) => {
+      try {
+        const response = await fetch(stateCityUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            country,
+            state,
+          }),
+        });
+  
+        if (!response.ok) {
+          throw new Error('Failed to fetch cities');
+        }
+  
+        const { data } = await response.json();
+        return data || []; // Returning the list of cities
+      } catch (error) {
+        console.error('Error fetching cities:', error);
+        return rejectWithValue(error.message); // Rejecting the thunk with the error message
+      }
+    }
+  );
+  
+
+const stateCitySlice = createSlice({
+  name: 'stateCity',
+  initialState: {
+    states: [],
+    cities: [],
+    loading: false,
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCities.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchCities.fulfilled, (state, action) => {
+        state.loading = false;
+        state.cities = action.payload; // Save cities to store
+      })
+      .addCase(fetchCities.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+  },
+});
+
+export default stateCitySlice.reducer;

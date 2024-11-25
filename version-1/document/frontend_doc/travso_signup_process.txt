@@ -1,0 +1,62 @@
+
+Travso App Development Documentation
+LOGIN AND SIGNUP MODULE DOC
+
+Project Name :- Travso
+
+==========================================================================
+
+Process = SignUp
+Main Component = SignupPage.jsx
+Folder Destination :- src/Components/MainPages/SignupPage.jsx
+
+=> Created designs of all pages of signup. Sign up process consists of following Steps :-
+  Step-1 : Gather Basic information of user like:-
+	   i) Full Name
+           ii) Gender
+	   iii) State
+           iv) City
+           v) DOB
+	   vi) Email-id
+	   vii) Mobile Number
+
+  -> component used = SignupStep1.jsx
+
+  When user provides above details and clicks on next button, we ask for OTP verification on given 
+  mobile number. Once the user is verified we move to step-2.
+
+ Step-2 : On Step-2 we have two button asking for "Are you an influencer?". By default we it is "No".
+	  If user selects "Yes", Then we ask for any two social media links. User will have to provide
+	  atleast one social media link. In this we set the type of user(influencer or traveler(default))
+
+   -> component used = InfluencerPage.jsx
+   
+ Step-3 : This is the final Process of Signup. we ask for user details like:-
+	  i) username
+	  ii) Description
+	  iii) Create Passsword
+	  iv) Confirm Password
+
+	Once the user fills all entries, we will redirect to login page if api response is success.
+
+   -> component used = AlmostPage.jsx
+
+
+================================================================================================================
+
+Redux slice for calling Signup Process apis
+folder destination :- src/redux/authSlice
+=>  created thunk functions :-
+1)  registerUser function :- It is calling signup api from backend and storing data in user state.
+2)  generateOtp function :- It is calling otp api with generate action.
+3)  verifyOtp function :- It is calling otp api with verify action.
+ =>  Used on SignupStep1.jsx in handleNextStep1() function.
+
+-> Redux for state and city api:-
+folder destination :- src/redux/StateCitySlice.js
+1) fetchStates function :- It is calling third-party api for states of India.
+2) fetchCities function :- It is calling third-part api for cities of particular state.
+
+ =>  fetchStates -> Used on SignupStep1.jsx in useEffect() function.
+=>  fetchCities -> Used on SignupPage.jsx in handleSelectChange() function.
+=========================================================================================================
