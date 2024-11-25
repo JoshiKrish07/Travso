@@ -1,0 +1,72 @@
+Travso App Development Documentation (Backend)
+LOGIN AND SIGNUP MODULE DOC
+
+Project Name :- Travso
+
+=============================================================================================================================
+
+1) Created server.js at root directory.
+
+2) Provided routes for signup process.
+   app.use('/api/auth', authRoutes);
+
+3) controllers folder :-
+  => authController.js :-
+    
+    i) registerUser function (working on '/api/auth/signup'):- 
+    
+    -> In this function first checking for existing user and for otpVerified (for testing we are not updating otpVerified to true because we have limited accounts to test).
+    -> Generated OTP through generateOTP() function                        
+    -> Inserted user details to database if all conditions matches.
+
+    ii) sendOTP function (working on '/api/auth/send-otp') :-
+    -> first finding user through mobile number.
+    -> Using sendMobileOTP() function to send OTP through twilio to mobile number.(for testing we have to first register number)
+    * Note :- Currently commented the condition while giving error on otp generation as it will give error to frontend and further process will be interrupted.
+
+   iii) verifyOTP function (working on '/api/auth/verify-otp'):- 
+    -> Taking mobile number and otp and checking from database.
+
+    iv) finalSignUp function (working on '/api/auth/final-signup') :-
+    -> updating user details with user_name, description, password.
+    -> Using bcrypt for password hashing.
+
+    v) resendOTP function (working on '/api/auth/resend-otp') :-
+    -> Taking email, mobileNumber inputs for checking in database and sending otp through sendMobileOTP() function.
+    -> Updating otp field in database
+
+    vi) getFollowersCount function (working on '/api/auth/followers-count') :- 
+    -> Taking smlink1, mobileNumber, email fields.
+    -> Using puppeteer package to fetch followers count from meta tags of html which came in response of third-party-api 'https://www.instagram.com/{user_name}/' 
+    -> Checking if user's followers count is more than 3000, then set it to influencer otherwise traveler.
+
+    vii) loginUser function (working on '/api/auth/login'):- 
+    -> Checking for user with userName in db.
+    -> If user found then creates a token using jsonwebtoken package and sent it to frontend.
+
+    viii) sendEmailOTP function (working on '/api/auth/email-otp')  (forgot password section):-
+    -> Taking email and user name from frontend and checks in Database.
+    -> Using Nodemailer for sending email OTP.
+
+    ix) sendOTPForgotPassword function  (working on '/api/auth/mobile-otp')  (forgot password section) :-
+    -> Taking mobileNumber, userName from frontend and checks in DB for user.
+    -> Using sendMobileOTP() function sending OTP to mobile number if user exists.
+
+    x) forgotPassVerify function  (working on '/api/auth/fp-otp-verify')  (forgot password section) :-
+    -> Taking mobileNumber, email, userName, otp fields from frontend.
+    -> Check for mobile process or email process and find user according to it fron database.
+    -> Check for OTP from database and verify it.
+
+    xi) updatePassword function (working on '/api/auth/update-password')  (forgot password section) :-
+    -> Taking mobileNumber, email, userName, password from frontend and checks in db for user.
+    -> Hashes the password and if user found then update the password in database.
+
+==============================================================================================================================================
+
+
+destination :- utils
+1) db.js => Used for creating pool with Database.
+2) generateOTP.js => Used for generating OTP of 4 digits.
+3) sendMobileOTP.js => Using twilio credentials sending OTP to mobile number.(In testing OTP can be sent to only registered numbers)
+
+============================================================================================================================================

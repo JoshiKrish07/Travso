@@ -50,7 +50,30 @@ folder destination :- src/redux/authSlice
 1)  registerUser function :- It is calling signup api from backend and storing data in user state.
 2)  generateOtp function :- It is calling otp api with generate action.
 3)  verifyOtp function :- It is calling otp api with verify action.
+4)  resendOTP function :- It is calling resend-otp api for a new OTP.
  =>  Used on SignupStep1.jsx in handleNextStep1() function.
+
+5) finalSignup function :- It is calling final-signup for taking user name, description and password.
+ =>  Used on SignUp.jsx in handleSubmit() function.
+
+6) setInfluencerType :- It is calling followers-count api to verify a user can be set as influencer or not.
+ =>  Used on InfluencerPage.jsx in handleNextStep2() function.
+
+7) loginUser function :- It is calling login api.
+ =>  Used on LoginPage.jsx in handleSubmit() function.
+
+8) getEmailOTP function :- It is calling email-otp api to get email otp(forgot password section).
+ =>  Used on LoginPage.jsx in handleNext() function.
+
+9) getMobileOTPForgotPass function :- It is calling mobile-otp to get otp on mobile(forgot password section).
+ =>  Used on LoginPage.jsx in handleNext() function.
+
+10) verifyForgotPassOTP function :- It is calling fp-otp-verify api to verify otp sent on mobile number or email(forgot password section).
+=>  Used on LoginPage.jsx in handleVerify() function.
+
+11) updatePassword function :- It is calling update-password api to create new password(forgot password section).
+=>  Used on LoginPage.jsx in handleSubmitPassword() function.
+
 
 -> Redux for state and city api:-
 folder destination :- src/redux/StateCitySlice.js
@@ -59,4 +82,22 @@ folder destination :- src/redux/StateCitySlice.js
 
  =>  fetchStates -> Used on SignupStep1.jsx in useEffect() function.
 =>  fetchCities -> Used on SignupPage.jsx in handleSelectChange() function.
+
 =========================================================================================================
+
+Process :- Login and forgot Password
+
+1) Taking user name and password for login and calling handleSubmit() function for login.
+   redux function used :- loginUser()
+
+2) forgot password section :-
+   i) Through mobile otp :- Taking user mobile number and username and calling handleNext() function.
+  ii) Through email otp :- Taking user email and username and calling handleNext() function.
+ iii) Verify OTP :- OTP fields to enter OTP and calling handleVerify() function which in return calls verifyForgotPassOTP() function from redux.
+  iv) Change Password :- Inputs for password and confirm password and calling handleSubmitPassword() function which calls updatePassword() from redux.
+
+For validation :-
+  i) Login :- validateInputs() function is used.
+ ii) Forgot Password :- validateFpInputs() is used.
+
+ =========================================================================================================
